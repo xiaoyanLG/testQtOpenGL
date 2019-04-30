@@ -7,7 +7,6 @@
 
 // OpenGL
 #include <QOpenGLFunctions>
-#include <QOpenGLPaintDevice>
 #include <QOpenGLContext>
 #include <QOpenGLShaderProgram>
 
@@ -24,7 +23,6 @@ XYTestWindow::XYTestWindow(QWindow *parent)
     m_context->create();
 
     m_funcs = nullptr;
-    m_device = nullptr;
     m_program = nullptr;
 }
 
@@ -75,12 +73,6 @@ void XYTestWindow::paint()
 void XYTestWindow::paintGL()
 {
     m_context->makeCurrent(this);
-
-    if (m_device == nullptr) {
-        m_device = new QOpenGLPaintDevice;
-        m_device->setSize(size() * devicePixelRatio());
-        m_device->setDevicePixelRatio(devicePixelRatio());
-    }
 
     if (m_funcs == nullptr) {
         m_funcs = new QOpenGLFunctions(m_context);

@@ -5,7 +5,6 @@
 
 class QOpenGLShaderProgram;
 class QOpenGLFunctions;
-class QOpenGLPaintDevice;
 class XYTestWindow : public QWindow
 {
     Q_OBJECT
@@ -26,7 +25,6 @@ private:
     QOpenGLShaderProgram *m_program;
     QOpenGLFunctions *m_funcs;
     QOpenGLContext *m_context;
-    QOpenGLPaintDevice *m_device;
 
 };
 
