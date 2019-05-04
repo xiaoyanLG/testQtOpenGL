@@ -13,7 +13,7 @@
 XYTestWindow::XYTestWindow(QWindow *parent)
     : QWindow(parent)
 {
-    setSurfaceType(QWindow::OpenGLSurface);
+    setSurfaceType(QWindow::RasterGLSurface);
 
     backingStore = new QBackingStore(this);
 
@@ -59,6 +59,7 @@ void XYTestWindow::paint()
     line.setColorAt(1, QColor("green"));
     painter.setBrush(line);
     painter.drawPath(triangle);
+    painter.end();
 
     backingStore->endPaint();
     backingStore->flush(rect);
